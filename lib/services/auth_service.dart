@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class AuthService extends ChangeNotifier {
   final String _baseUrl = 'identitytoolkit.googleapis.com';
   final String _firebaseToken = 'AIzaSyCkO_j1oJcR5ZPzGHPnGFw3-kfz_WqSid0';
-  final storage = FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
 
   Future<String?> createUser(String email, String password) async {
     //data que tengo que mandar en el body de la peticion

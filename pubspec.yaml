@@ -32,10 +32,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  http: ^0.13.5
-  provider: ^6.0.5
-  image_picker: ^0.8.6
   flutter_secure_storage: ^7.0.1
+  google_fonts: ^5.0.0
+  http: ^1.0.0
+  image_picker: ^0.8.6
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -55,6 +56,7 @@ flutter:
   assets:
     - assets/loading-11.gif
     - assets/no-image.png
+    - null
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

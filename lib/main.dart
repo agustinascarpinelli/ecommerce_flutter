@@ -1,11 +1,14 @@
 import 'package:ecommerce_app/screens/screens.dart';
 import 'package:ecommerce_app/services/services.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(AppState());
+void main() => runApp(const AppState());
 
 class AppState extends StatelessWidget {
+  const AppState({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
@@ -35,6 +38,7 @@ class MyApp extends StatelessWidget {
         scaffoldMessengerKey: NotificationsService.messengerKey,
         theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: Colors.grey[300],
+          textTheme: GoogleFonts.nunitoSansTextTheme( const TextTheme() ),
           appBarTheme: const AppBarTheme(
             elevation: 0,
             color: Colors.deepPurple,

@@ -30,14 +30,12 @@ class SearchProduct extends SearchDelegate {
   }
 
   Widget _emptyContainer() {
-    return Container(
-      child: const Center(
-          child: Icon(
-        Icons.search_off_outlined,
-        color: Colors.deepPurple,
-        size: 200,
-      )),
-    );
+    return const Center(
+        child: Icon(
+      Icons.search_off_outlined,
+      color: Colors.deepPurple,
+      size: 200,
+    ));
   }
 
   @override
@@ -47,7 +45,7 @@ class SearchProduct extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // TODO: implement buildSuggestions
+    
     if (query.isEmpty) {
       return _emptyContainer();
     }
@@ -59,10 +57,7 @@ class SearchProduct extends SearchDelegate {
     }).toList();
 
     if (_filter.isEmpty) {
-      return Container(
-        child:
-            Center(child: Text('There is no products with titled "${query}"')),
-      );
+      return Center(child: Text('There is no products with titled "$query"'));
     }
 
     return ListView.builder(

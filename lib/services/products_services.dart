@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 
 class ProductsService extends ChangeNotifier {
   final String _baseUrl = 'flutter-ecommerce-eb38c-default-rtdb.firebaseio.com';
+  
 //final porque no quiero destruir el objeto y volverlo a asignar si no solo cambiar sus valores
   final List<Product> products = [];
 //No es final porque va a estar cambiando entre true y false
@@ -14,7 +15,7 @@ class ProductsService extends ChangeNotifier {
   bool isSaving = false;
   File? newImg;
   Product? selectedProduct;
-  final storage=FlutterSecureStorage();
+  final storage=const FlutterSecureStorage();
 
   ProductsService() {
     loadProducts();
@@ -63,10 +64,12 @@ class ProductsService extends ChangeNotifier {
   }
 
   Future<String> createProduct(Product product) async {
-    final url = Uri.https(_baseUrl, 'products/products.json');
+    final url = Uri.https(_baseUrl, 'products/products.json',{'auth':await storage.read(key: 'token')??''});
     final response = await http.put(url, body: product.toJson());
     final decodedData=json.decode(response.body);
-    product.id=decodedData['name'];
+    product.id=decodedData['title'];
+
+  
     products.add(product);
     return product.id!;
   }
@@ -97,7 +100,6 @@ class ProductsService extends ChangeNotifier {
     final resp=await http.Response.fromStream(response);
 
     if(resp.statusCode!=200&& resp.statusCode!=201){
-      print(resp.body);
       return null;
     }
     //ya lo subi,limpio la propiedad

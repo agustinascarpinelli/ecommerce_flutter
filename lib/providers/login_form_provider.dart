@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class LoginFormProvider extends ChangeNotifier {
   
-  GlobalKey<FormState> loginKey=new GlobalKey<FormState>();
+  GlobalKey<FormState> loginKey=GlobalKey<FormState>();
   
 
   String email ='';

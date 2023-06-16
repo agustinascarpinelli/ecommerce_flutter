@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/models/products.dart';
 import 'package:ecommerce_app/providers/providers.dart';
 import 'package:ecommerce_app/services/services.dart';
 import 'package:ecommerce_app/ui/input_decorations.dart';
@@ -137,11 +136,13 @@ class _EditForm extends StatelessWidget {
               height: 10,
             ),
             TextFormField(
+              style: const TextStyle(color: Colors.black),
               initialValue: product.title,
               onChanged: (value) => product.title = value,
               validator: (value) {
-                if (value == null || value.length < 1)
+                if (value == null || value.isEmpty) {
                   return 'The title must be provided';
+                }
               },
               decoration: InputDecorations.loginInputDecoration(
                 hintText: 'Product title',
@@ -150,6 +151,7 @@ class _EditForm extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             TextFormField(
+              style: const TextStyle(color: Colors.black),
               initialValue: product.description,
               onChanged: (value) =>product.description=value ,
               decoration: InputDecorations.loginInputDecoration(
@@ -159,6 +161,7 @@ class _EditForm extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             TextFormField(
+              style: const TextStyle(color: Colors.black),
               //Para poner diferentes reglas para darle formato al texto
               inputFormatters: [
                 //import flutter/services.dart

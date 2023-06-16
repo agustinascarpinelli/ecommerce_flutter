@@ -81,22 +81,22 @@ class _PriceTag extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      //Para poder usar simbolo $ dentro de un text usamos la  '\'
-      child: FittedBox(
-        fit: BoxFit.contain,
-        child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              ' \$${price}',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            )),
-      ),
       width: 100,
       height: 70,
       decoration: const BoxDecoration(
           color: Colors.deepPurple,
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(25), bottomLeft: Radius.circular(25))),
+      //Para poder usar simbolo $ dentro de un text usamos la  '\'
+      child: FittedBox(
+        fit: BoxFit.contain,
+        child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text(
+              ' \$$price',
+              style: const TextStyle(color: Colors.white, fontSize: 20),
+            )),
+      ),
     );
   }
 }
@@ -120,14 +120,16 @@ class _ProductDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            Expanded(
+              child: Text(
+                title,
+                style: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             if (description!=null )
             Text(
